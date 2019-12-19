@@ -1,2 +1,49 @@
-# Impl-mentation-d-une-architecture-deux-tiers-en-Java-EE
-Ci dessous le code par exemple  de l'article &lt;a href='https://www.commentcamarche.com/faq/507 71-implementation-d-une-architecture-deux-tiers-en-java-ee'>Implémentation d'un e architecture deux tiers en Java EE&lt;/a> &lt;br /> &lt;br />Compilation avec la comm ande Maven suivante (70 Mo d'espace requis) &lt;br />&lt;pre class="code" data-mode=" java">mvn clean install&lt;/pre> &lt;br />Exécution avec la commande Maven &lt;pre clas s="code inline inline-code" data-mode="java">mvn exec:java&lt;/pre> ou directement  en Java : &lt;br />&lt;pre class="code" data-mode="java">java -jar ccm-kx-server-jar- with-dependencies.jar&lt;/pre> &lt;br />Pour arrêter le serveur, il faut appuyer sur  Entrée dans la ligne de commande. &lt;br /> &lt;br />Exemples d'utilisation avec u n navigateur web : &lt;br /> &lt;br />Liste des utilisateurs (renvoie la liste des l ogin) &lt;br />&lt;a href='http://localhost:8080/user/list' rel='noopener  noreferrer ' target='_blank'>http://localhost:8080/user/list&lt;/a> &lt;br /> &lt;br />Modificatio n du mot de passe de l'administrateur (renvoie null) &lt;br />&lt;a href='http://loca lhost:8080/user/updatePassword?userLogin=admin&amp;userPassword=admin&amp;newPassword=AD MIN' rel='noopener  noreferrer' target='_blank'>http://localhost:8080/user/updat ePassword?userLogin=admin&amp;userPassword=admin&amp;newPassword=ADMIN&lt;/a> &lt;br /> &lt;br  />Création d'un nouvel utilisateur par l'administrateur  (renvoie null) &lt;br /> &lt;a href='http://localhost:8080/user/create?userLogin=admin&amp;userPassword=ADMIN&amp;ne wLogin=toto&amp;newPassword=123456' rel='noopener  noreferrer' target='_blank'>http: //localhost:8080/user/create?userLogin=admin&amp;userPassword=ADMIN&amp;newLogin=toto&amp;ne wPassword=123456&lt;/a> &lt;br /> &lt;br />Pour manipuler directement la base de donné es vous pouvez lancer la console H2 comme ceci : &lt;br />&lt;pre class="code" data-m ode="java">java -cp ccm-kx-server-jar-with-dependencies.jar org.h2.tools.Console &lt;/pre> &lt;br />Avec les même paramètres que celui du fichier persistence.xml :   &lt;br />- Pilote → org.h2.Driver &lt;br />- URL → jdbc:h2:file:C:h2ccm.kx.serve r.h2 &lt;br />- Utilisateur → admin &lt;br />- Mot de passe → admin &lt;br /> &lt;br  />Erreur fréquente : &lt;br />Lors de l'utilisation du programme, vous pourriez  avoir cette erreur au démarrage : &lt;br /> &lt;br />&lt;pre class="code" data-mode="j ava">java.lang.ExceptionInInitializerError Caused by: org.hibernate.service.spi. ServiceException: Unable to create requested service [org.hibernate.engine.jdbc. env.spi.JdbcEnvironment] Caused by: org.hibernate.HibernateException: Access to  DialectResolutionInfo cannot be null when &amp;apos;hibernate.dialect&amp;apos; not set&lt; /pre> &lt;br />Ce message apparaît lorsque le fichier de la base de donnée est d éjà utilisé, soit par une autre instance de serveur, soit par la console H2.
+Ci dessous le code de l'article Implémentation d'une architecture deux tiers en Java EE
+
+Compilation avec la commande Maven suivante (70 Mo d'espace requis)
+
+mvn clean install
+
+
+Exécution avec la commande Maven
+
+mvn exec:java
+
+ou directement en Java :
+
+java -jar ccm-kx-server-jar-with-dependencies.jar
+
+
+Pour arrêter le serveur, il faut appuyer sur Entrée dans la ligne de commande.
+
+Exemples d'utilisation avec un navigateur web :
+
+Liste des utilisateurs (renvoie la liste des login)
+http://localhost:8080/user/list
+
+Modification du mot de passe de l'administrateur (renvoie null)
+http://localhost:8080/user/updatePassword?userLogin=admin&userPassword=admin&newPassword=ADMIN
+
+Création d'un nouvel utilisateur par l'administrateur (renvoie null)
+http://localhost:8080/user/create?userLogin=admin&userPassword=ADMIN&newLogin=toto&newPassword=123456
+
+Pour manipuler directement la base de données vous pouvez lancer la console H2 comme ceci :
+
+java -cp ccm-kx-server-jar-with-dependencies.jar org.h2.tools.Console
+
+
+Avec les même paramètres que ceux décrits dans le fichier persistence.xml :
+- Pilote → org.h2.Driver
+- URL → jdbc:h2:file:C:\h2\ccm.kx.server.h2
+- Utilisateur → admin
+- Mot de passe → admin
+
+Erreur fréquente :
+Lors de l'utilisation du programme, vous pourriez avoir cette erreur au démarrage :
+
+java.lang.ExceptionInInitializerError
+Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo cannot be null when 'hibernate.dialect' not set
+
+
+Ce message apparaît lorsque le fichier de la base de donnée est déjà utilisé, soit par une autre instance de serveur, soit par la console H2.
